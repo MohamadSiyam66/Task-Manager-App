@@ -1,0 +1,103 @@
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+    box-shadow: #007bff 0px 0px 10px 0px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.navbar:hover {
+    background-color: #ffff;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    margin-right: 16px;
+    font-weight: 600;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.spacer {
+    flex: 1;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    border: 1px solid #ffffff;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #007bff;
+    transform: translateY(-2px);
+}
+
+button:active {
+    font-weight: 600;
+    transform: translateY(2px); 
+}
+
+.custom-toolbar {
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Smooth scroll effect for all anchor tags */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling when clicking anchor links */
+}
+
+/* Scroll animations for elements as they enter the viewport */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animation {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+}
+
+.scroll-animation.visible {
+    opacity: 1;
+    animation: fadeInUp 1s forwards;
+}
+
+/* Example for scroll animation trigger */
+section {
+    margin: 50px 0;
+}
+
+/* Apply the scroll animation effect */
+.scroll-animation {
+    visibility: hidden;
+}
+
+.scroll-animation.visible {
+    visibility: visible;
+}
