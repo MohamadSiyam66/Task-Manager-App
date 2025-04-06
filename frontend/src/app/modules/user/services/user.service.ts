@@ -48,6 +48,12 @@ export class UserService {
     });
   }
 
+  filterTask(status:string):Observable<any> {
+    return this.http.get(BASE_URL + `api/user/tasks/filter/${status}` ,{
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
 private createAuthorizationHeader(): HttpHeaders {
   return new HttpHeaders().set('Authorization', 'Bearer ' + StorageService.getToken());
 }
