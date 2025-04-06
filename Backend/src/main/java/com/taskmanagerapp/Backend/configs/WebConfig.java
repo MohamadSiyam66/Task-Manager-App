@@ -60,7 +60,6 @@ public class WebConfig implements WebMvcConfigurer {
         return null;
     }
 
-
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -79,7 +78,4 @@ public class WebConfig implements WebMvcConfigurer {
         return configuration.getAuthenticationManager();
     }
 
-
-
 }
-
