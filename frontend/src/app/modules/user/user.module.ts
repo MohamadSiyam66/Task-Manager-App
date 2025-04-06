@@ -6,16 +6,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCard, MatCardModule } from '@angular/material/card';
 import { AngularMaterialModule } from 'src/app/AngularMaterialModule';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
+import { ViewTaskComponent } from './components/view-task/view-task.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CreateTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    ViewTaskComponent
   ],
   imports: [
     CommonModule,
