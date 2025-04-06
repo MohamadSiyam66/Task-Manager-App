@@ -15,4 +15,6 @@ public interface UserService {
     void deleteTask(Long id);
     TaskDto getTaskById(Long id);
     TaskDto updateTask(Long id, TaskDto taskDto);
+    List<TaskDto> searchTaskByStatus(String status);
+
 }

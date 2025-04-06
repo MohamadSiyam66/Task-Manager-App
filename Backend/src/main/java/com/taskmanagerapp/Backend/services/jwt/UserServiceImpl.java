@@ -6,6 +6,7 @@ import com.taskmanagerapp.Backend.entities.Task;
 import com.taskmanagerapp.Backend.entities.User;
 import com.taskmanagerapp.Backend.repositories.TaskRepository;
 import com.taskmanagerapp.Backend.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -58,6 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<TaskDto> getAllTasks() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Optional<User> optionalUser = userRepository.findByUsername(username);
@@ -115,7 +117,14 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-
+    @Override
+    public List<TaskDto> searchTaskByStatus(String status) {
+        return taskRepository.findAllByStatus(status)
+                .stream()
+                .sorted(Comparator.comparing(Task::getCreatedAt).reversed())
+                .map(Task::getTaskDto)
+                .collect(Collectors.toList());
+    }
 
 
 }

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
@@ -57,6 +59,11 @@ public class UserController {
        }else {
            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
        }
+    }
+
+    @GetMapping("/tasks/filter/{status}")
+    public ResponseEntity<List<TaskDto>> searchTaskFilter(@PathVariable String status){
+        return ResponseEntity.ok(userService.searchTaskByStatus(status));
     }
 
 }
