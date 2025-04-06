@@ -16,16 +16,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
 
     private final AuthService authService;
@@ -61,11 +59,11 @@ public class AuthController {
 
         if(optionalUser.isPresent()) {
             String username = optionalUser.get().getUsername();
-            String nameBeforeAt = username.split("@")[0];
+            //String nameBeforeAt = username.split("@")[0];
 
             authResponse.setJwt(jwtToken);
             authResponse.setUserId(optionalUser.get().getId());
-            authResponse.setUsername(nameBeforeAt);
+            authResponse.setUsername(username);
         }
 
         return authResponse;
