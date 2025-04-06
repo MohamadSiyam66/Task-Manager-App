@@ -16,7 +16,8 @@ Full Stack Coding Assignment from Treinetic
    
 ### Backend Setup
 cd backend
-open application.properties -> add your username and password
+open application.properties
+   add your username and password
 connect with MySQL Database
 update maven dependencies
 Run BackendApplication
