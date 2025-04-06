@@ -1,15 +1,16 @@
 package com.taskmanagerapp.Backend.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class TaskDto {
 
     private Long id;
     private String title;
     private String description;
     private String status;
+
+    private Long userId;
+    private String userName;
 }
 
