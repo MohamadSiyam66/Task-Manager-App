@@ -1,85 +1,184 @@
-.container{
+/* Add this to your component's SCSS file */
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+// Color variables
+$primary-color: #108ee9;
+$primary-light: lighten($primary-color, 10%);
+$primary-dark: darken($primary-color, 10%);
+$error-color: #f44336;
+$success-color: #4caf50;
+
+/* Container Animation */
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: auto;
-    padding: 50px 10px 5px 10px;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(16, 142, 233, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
-    /* General container styles */
-    // .container {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     min-height: auto;
-    //     padding: 16px;
-    //     background-color: #f5f5f5;
-    // }
-    
-    /* Card styles */
-    mat-card {
-        width: 100%;
-        max-width: 500px;
-        padding: 2rem;
-        box-shadow: 0 4px 12px #3f51b5;
-        border-radius: 8px;
-        
-    }
-    
-    /* Title styles */
-    .title {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: #ffff;
-        font-weight: 500;
-    }
-    
-    /* Form field styles */
-    mat-form-field {
-        width: 100%;
-        margin-bottom: 1rem;
-        color:#ffff;
-    }
-    
-    /* Button styles */
-    button[type="submit"] {
-        width: 100%;
-        padding: 8px 0;
-        margin-top: 1rem;
-        background-color: #3f51b5;
-        color: white;
-        font-size: 1rem;
-        transition: background-color 0.3s;
-    }
-    
-    button[type="submit"]:hover:not([disabled]) {
-        background-color: #303f9f;
-    }
-    
-    button[type="submit"]:disabled {
-        background-color: #b0bec5;
-        cursor: not-allowed;
-    }
-    
-    /* Loading spinner styles */
-    .loading-spinner {
-        margin: 0 auto;
-    }
-    
-    /* Error message styles */
-    mat-error {
-        font-size: 12px;
-        margin-top: 0.25rem;
-        color:rgb(253, 29, 29)
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-        mat-card {
-        padding: 1.5rem;
-        }
-        
-        .title {
-        font-size: 1.5rem;
-        }
-    } 
+/* Card Styling */
+.register-card {
+width: 100%;
+max-width: 450px;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 10px 30px rgba(16, 142, 233, 0.2);
+transform: translateY(20px);
+opacity: 0;
+animation: cardEntrance 0.6s ease-out 0.3s forwards;
+
+&:hover {
+    box-shadow: 0 15px 40px rgba(16, 142, 233, 0.3);
+}
+}
+
+.title {
+color: $primary-color;
+font-size: 2rem;
+font-weight: 600;
+text-align: center;
+margin: 1.5rem 0;
+padding-bottom: 1rem;
+border-bottom: 2px solid rgba(16, 142, 233, 0.1);
+}
+
+.card-content {
+padding: 2rem;
+}
+
+/* Form Styling */
+.login-form {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.form-field {
+width: 100%;
+animation: fieldEntrance 0.5s ease-out forwards;
+opacity: 0;
+
+&:nth-child(1) { animation-delay: 0.5s; }
+&:nth-child(2) { animation-delay: 0.7s; }
+}
+
+/* Input field styling */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+color: rgba(16, 142, 233, 0.2);
+border-radius: 8px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+color: $primary-color;
+}
+
+::ng-deep .mat-form-field-label {
+color: rgba(0, 0, 0, 0.6);
+}
+
+::ng-deep .mat-input-element {
+color: #333;
+caret-color: $primary-color;
+}
+
+.visibility-toggle {
+color: rgba(0, 0, 0, 0.4);
+transition: all 0.2s ease;
+
+&:hover {
+    color: $primary-color;
+    transform: scale(1.1);
+}
+}
+
+/* Button Styling */
+.submit-button {
+background-color: $primary-color;
+color: white;
+font-size: 1rem;
+font-weight: 500;
+height: 48px;
+border-radius: 8px;
+transition: all 0.3s ease;
+animation: fadeIn 0.5s ease-out 0.9s forwards;
+opacity: 0;
+
+&:hover {
+    background-color: $primary-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 142, 233, 0.3);
+}
+
+&:disabled {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.4);
+}
+}
+
+.loading-spinner {
+margin: 0 auto;
+::ng-deep circle {
+    stroke: white;
+}
+}
+
+/* Error Styling */
+.error-message {
+color: $error-color;
+font-size: 0.8rem;
+margin-top: 5px;
+animation: shake 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes cardEntrance {
+from { 
+    opacity: 0;
+    transform: translateY(20px);
+}
+to { 
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+@keyframes fieldEntrance {
+from { 
+    opacity: 0;
+    transform: translateX(-20px);
+}
+to { 
+    opacity: 1;
+    transform: translateX(0);
+}
+}
+
+@keyframes shake {
+0%, 100% { transform: translateX(0); }
+20%, 60% { transform: translateX(-5px); }
+40%, 80% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+.container {
+    padding: 1rem;
+}
+
+.register-card {
+    box-shadow: 0 5px 15px rgba(16, 142, 233, 0.2);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+}

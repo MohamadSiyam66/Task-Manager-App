@@ -1,76 +1,192 @@
-    /* General container styles */
-    .container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: auto;
-        padding: 50px 10px 5px 10px;
+/* Color Variables */
+$primary-color: #108ee9;
+$primary-light: lighten($primary-color, 10%);
+$primary-dark: darken($primary-color, 10%);
+$error-color: #f44336;
+$success-color: #4caf50;
+
+/* Animation Definitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(16, 142, 233, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Card Styles */
+.register-card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(16, 142, 233, 0.15);
+    animation: fadeInScale 0.5s ease-out 0.2s both;
+    transition: all 0.5s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgb(16, 143, 233);
     }
-    
-    /* Card styles */
-    mat-card {
-        width: 100%;
-        max-width: 500px;
-        padding: 2rem;
-        box-shadow: 0 4px 12px #3f51b5;
-        border-radius: 8px;
-        
+}
+
+.title {
+    color: $primary-color;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+.card-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Form Styles */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-field {
+    width: 100%;
+    animation: fadeIn 0.5s ease-out;
+
+    &:nth-child(1) { animation-delay: 0.3s; }
+    &:nth-child(2) { animation-delay: 0.6s; }
+    &:nth-child(3) { animation-delay: 0.9s; }
+
+.mat-form-field-outline {
+    background-color: white;
+    border-radius: 8px;
+    color: rgba(16, 142, 233, 0.2);
+}
+
+.mat-form-field-outline-thick {
+    color: $primary-color;
+}
+
+.mat-form-field-label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.mat-input-element {
+    color: #333;
+    font-size: 1rem;
+}
+}
+
+.visibility-toggle {
+    color: rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+
+&:hover {
+    color: $primary-color;
+    transform: scale(1.1);
+}
+}
+
+.error-message {
+    color: $error-color;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Button Styles */
+.submit-button {
+    background-color: $primary-color;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out 0.6s both;
+
+    &:hover {
+        background-color: $primary-dark;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 142, 233, 0.3);
     }
-    
-    /* Title styles */
-    .title {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: #ffff;
-        font-weight: 500;
+
+    &:disabled {
+        background-color: rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.38);
+        transform: none;
+        box-shadow: none;
     }
-    
-    /* Form field styles */
-    mat-form-field {
-        width: 100%;
-        margin-bottom: 1rem;
-        color:#ffff;
+}
+
+.loading-spinner {
+    margin: 0 auto;
+
+    ::ng-deep circle {
+        stroke: white;
     }
-    
-    /* Button styles */
-    button[type="submit"] {
-        width: 100%;
-        padding: 8px 0;
-        margin-top: 1rem;
-        background-color: #3f51b5;
-        color: white;
-        font-size: 1rem;
-        transition: background-color 0.3s;
-    }
-    
-    button[type="submit"]:hover:not([disabled]) {
-        background-color: #303f9f;
-    }
-    
-    button[type="submit"]:disabled {
-        background-color: #b0bec5;
-        cursor: not-allowed;
-    }
-    
-    /* Loading spinner styles */
-    .loading-spinner {
-        margin: 0 auto;
-    }
-    
-    /* Error message styles */
-    mat-error {
-        font-size: 12px;
-        margin-top: 0.25rem;
-        color:rgb(253, 29, 29)
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-        mat-card {
-        padding: 1.5rem;
-        }
-        
-        .title {
-        font-size: 1.5rem;
-        }
-    } 
+}
+
+/* Material Overrides */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-gap,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-width: 1px !important;
+}
+
+::ng-deep .mat-error {
+    font-size: 0.8rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+.container {
+    padding: 1rem;
+}
+
+.register-card {
+    max-width: 100%;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+}
+
+.form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+}

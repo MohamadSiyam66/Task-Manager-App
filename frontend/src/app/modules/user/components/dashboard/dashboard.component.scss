@@ -1,3 +1,15 @@
+/* Animation Definitions */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+from { opacity: 0; transform: scale(0.95); }
+to { opacity: 1; transform: scale(1); }
+}
+
+/* Task List Container */
 .task-list {  
     display: flex;  
     flex-wrap: wrap;  
@@ -5,40 +17,98 @@
     min-height: 170px;  
     padding: 20px;
     margin-top: 20px;
+    animation: fadeIn 0.8s ease-out forwards;
 }  
 
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 16px 0;
+    padding-right: 50px;
+    animation: fadeIn 1s ease-out;
+    
+    .label {
+        color: #000;
+        font-weight: 500;
+    }
+    
+    .search-input {
+        width: 250px;
+        max-width: 100%;
+        color: #000;
+        background-color: rgba(70, 169, 255, 0.393);
+        border-radius: 8px;
+        margin-right: 16px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background-color: rgba(70, 169, 255, 0.705);
+        }
+    }
+}
+
+/* Task Card */
 .task-card {  
-    width: calc(33.33% - 20px);    
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 6px rgb(90, 227, 255);
-    background-color: #ffffff; 
+    box-shadow: 0 2px 6px rgb(90, 228, 255);
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeInScale 1s ease-out forwards;
+    opacity: 0;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(90, 227, 255, 0.4);
+    }
+    
+    /* Staggered animations for each card */
+    @for $i from 1 through 12 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.1}s;
+        }
+    }
 }  
 
 .task-details {  
     padding: 20px;
     background-color: #108ee9;  
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(135deg, #108ee9, #46a9ff);
+    box-shadow: 0 2px 6px rgba(81, 141, 193, 0.836);
+    animation: fadeIn 2s ease-out;
 }  
 
 .task-name {  
     font-size: 20px;  
     font-weight: bold;  
-    color: #108ee9;  
+    color: #ffffff;  
     text-align: center;
     margin-bottom: 10px;  
-    border-radius: 10px;
-    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.5s ease-out;
 }  
 
 .task-description {  
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    line-height: 1.5;
+    animation: fadeIn 0.6s ease-out;
+    
 }  
 
 .task-info {  
     display: flex;  
     flex-wrap: wrap;  
-    padding-bottom: 10px;  
-    padding-top: 10px;  
+    padding: 15px 0;
+    animation: fadeIn 0.7s ease-out;
 }  
 
 .info-row {  
@@ -46,14 +116,87 @@
     display: flex;  
     align-items: center;  
     padding-left: 20px;
+    margin: 5px 0;
+    
 }  
 
 .info-label {  
     font-weight: 500; 
     color: #108ee9;
-    margin-right: 5px;  
+    margin-right: 5px;
+    font-size: 14px;
 }  
 
 .info-value {  
-    font-weight: bold;  
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    
+    &[data-status="TO DO"] { color: #ff9800; }
+    &[data-status="IN PROGRESS"] { color: #108ee9; }
+    &[data-status="DONE"] { color: #4caf50; }
 }  
+
+.actions {
+    display: flex;  
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    background-color: rgba(16, 142, 233, 0.05);
+    border-radius: 0 0 10px 10px;
+    animation: fadeIn 0.8s ease-out;
+    
+    button {
+        transition: all 0.2s ease;
+        
+        &:hover {
+            transform: scale(1.2);
+            background-color: rgba(16, 142, 233, 0.1);
+        }
+    }
+}
+
+/* Angular Material Overrides */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 8px;
+    color: rgba(16, 142, 233, 0.3);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #108ee9;
+}
+
+::ng-deep .mat-select-panel {
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0 2px 10px rgba(16, 142, 233, 0.2);
+}
+
+::ng-deep .mat-select-arrow {
+    color: #108ee9;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .task-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding-right: 0;
+        
+        .search-input {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+    
+    .task-card {
+        width: 100%;
+    }
+}

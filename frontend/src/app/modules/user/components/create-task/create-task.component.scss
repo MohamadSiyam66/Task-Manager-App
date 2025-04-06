@@ -1,124 +1,115 @@
-    :root {
-        --primary-color: #6c63ff;    /* Soft purple */
-        --secondary-color: #4fc3f7;  /* Light blue */
-        --background-color: #f8f9fa; /* Very light gray */
-        --card-color: #ffffff;       /* White */
-        --text-color: #495057;      /* Dark gray */
-        --border-color: #e9ecef;    /* Light gray border */
-        --error-color: #ff6b6b;     /* Soft red */
+/* Add this to your component's SCSS file or global styles */
+
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+mat-card {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(49, 193, 255, 0.91);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
+}
+
+mat-card-header {
+    background: linear-gradient(135deg, mat.get-color-from-palette(mat.$indigo-palette, 500), mat.get-color-from-palette(mat.$blue-palette, 500));
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0 !important;
     
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: auto;
-        padding: 2rem;
-        background-color: var(--background-color);
+}
+
+mat-card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+mat-card-content {
+    padding: 2rem;
+}
+
+.form-field {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    animation: slideIn 0.5s ease-out;
+
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.3s; }
+    &:nth-child(3) { animation-delay: 0.5s; }
+}
+
+mat-form-field {
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
     }
-    
-    .task-card {
-        width: 100%;
-        max-width: 600px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        background-color: var(--card-color);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .mat-form-field-outline {
+        background-color: white;
+        border-radius: 8px;
     }
-    
-    .task-card:hover {
+
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-gap,
+    .mat-form-field-outline-end {
+        border-width: 2px !important;
+    }
+}
+
+button[mat-raised-button] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    
-    .card-header {
-        padding: 1.5rem 1.5rem 0;
-        background-color: rgba(108, 99, 255, 0.05);
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .card-title {
-        color: var(--primary-color);
-        font-size: 1.8rem;
-        font-weight: 500;
-        margin: 0;
-        padding-bottom: 10px;
-        text-align: center;
-    }
-    
-    .card-content {
-        padding: 1.5rem;
-    }
-    
-    .task-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .form-field {
-        width: 100%;
-    }
-    
-    .mat-form-field-appearance-fill .mat-form-field-flex {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 8px;
-        padding: 0.75em 0.75em 0 0.75em;
-        border: 1px solid var(--border-color);
-    }
-    
-    .mat-form-field-appearance-fill .mat-form-field-underline::before {
-        background-color: transparent;
-    }
-    
-    .mat-input-element {
-        color: var(--text-color);
-    }
-    
-    .mat-form-field-label {
-        color: var(--text-color);
-        opacity: 0.7;
-    }
-    
-    .mat-select-value {
-        color: var(--text-color);
-    }
-    
-    .mat-error {
-        color: var(--error-color);
-        font-size: 0.85rem;
-    }
-    
-    .submit-button {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
-        margin-top: 1rem;
-    }
-    
-    .submit-button:hover:not([disabled]) {
-        background-color: #5a52e0;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .container {
-        padding: 1rem;
-        }
-        
-        .card-title {
-        font-size: 1.5rem;
-        }
-        
-        .task-form {
-        gap: 1rem;
-        }
-    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes slideIn {
+from { 
+    opacity: 0;
+    transform: translateY(20px);
+}
+to { 
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+.container {
+    padding: 1rem;
+}
+
+mat-card-content {
+    padding: 1.5rem;
+}
+}
