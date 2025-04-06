@@ -15,12 +15,12 @@ Full Stack Coding Assignment from Treinetic
    cd Task-Manager-App -> cd frontend
    
 ### Backend Setup
-cd backend
-open application.properties
+1. cd backend
+2. open application.properties
    add your username and password
-connect with MySQL Database
-update maven dependencies
-Run BackendApplication
+3. connect with MySQL Database
+4. update maven dependencies
+5. Run BackendApplication
 
 ## Frontend Setup
 1. Install dependencies: npm install
