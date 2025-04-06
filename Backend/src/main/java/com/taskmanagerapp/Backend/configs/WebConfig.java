@@ -1,6 +1,5 @@
 package com.taskmanagerapp.Backend.configs;
 
-import com.taskmanagerapp.Backend.entities.User;
 import com.taskmanagerapp.Backend.services.jwt.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -36,7 +35,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**").allowedOrigins("http://localhost:4200");  // Angular local URL
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:4200"); // Angular local URL
     }
 
     @Bean
