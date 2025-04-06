@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-
-interface RegisterFormData {
-  username: string;
-  password: string;
-  confirmpassword: string;
-}
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth/auth.service';
 
+interface RegisterFormData {
+  username: string;
+  password: string;
+  confirmpassword: string;
+}
 
 @Component({
   selector: 'app-register',
@@ -23,7 +22,11 @@ export class RegisterComponent {
   isLoading: boolean = false;
   hidePassword: boolean = true;
 
-  constructor(private fb: FormBuilder,private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder,
+    private authService: AuthService, 
+    private router: Router, 
+    private snackBar: MatSnackBar
+  ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -31,23 +34,38 @@ export class RegisterComponent {
     },);
   }
 
-
-
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.isLoading = true;
       this.authService.register(this.registerForm.value as RegisterFormData).subscribe({
         next: (): void => {
-          this.snackBar.open('Registered successfully', 'Close', { duration: 3000 });
+          this.snackBar.open('Registered successfully', 'Close', {
+            duration: 3000,
+            panelClass: 'success-snackbar'
+          });
           this.router.navigate(['/login']);
         },
-        error: (err: { error: { message?: string } }): void => {
-          this.snackBar.open(`Registration failed: ${err.error.message || 'Unknown error'}`, 'Close', { duration: 3000 });
+        error: (err: { status: number; error: { message?: string } }): void => {
+          let errorMessage = 'Registration failed!';
+  
+          if (err.status === 406) {
+            errorMessage = 'Registration failed! User Already Exists';
+          } else if (err.error?.message) {
+            errorMessage = `Registration failed: ${err.error.message}`;
+          }
+  
+          this.snackBar.open(errorMessage, 'Close', {
+            duration: 3000,
+            panelClass: 'error-snackbar'
+          });
+  
+          this.registerForm.reset();
           this.isLoading = false;
         }
       });
     }
   }
+  
 
   togglePaswordVisibility(): void {
     this.hidePassword = !this.hidePassword;

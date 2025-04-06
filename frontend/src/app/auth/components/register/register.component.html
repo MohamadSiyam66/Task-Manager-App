@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="register-card">
-        <mat-card-title class="title">Register User</mat-card-title>
+        <mat-card-title class="title">Register</mat-card-title>
         
         <mat-card-content class="card-content">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
@@ -40,7 +40,7 @@
                     <span *ngIf="!isLoading">Register</span>
                     <mat-spinner *ngIf="isLoading" diameter="20" class="loading-spinner"></mat-spinner>
                 </button>
-                <mat-error *ngIf="registerForm.invalid && registerForm.touched">Please fix the errors above</mat-error>
+                <mat-error *ngIf="registerForm.invalid && registerForm.touched">Please fill the details above</mat-error>
             </form>
         </mat-card-content>
     </mat-card>
