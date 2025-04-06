@@ -1,3 +1,4 @@
+<!-- Default NavBar -->
 <div *ngIf="!isUserLoggedIn" class="navbar"> 
   <mat-toolbar class="custom-toolbar"> 
     <span class="navbar-brand">Task Manager</span>  
@@ -7,6 +8,7 @@
   </mat-toolbar>
 </div> 
 
+<!-- LoggedIn User's NavBar -->
 <div *ngIf="isUserLoggedIn" class="navbar">
   <mat-toolbar class="custom-toolbar"> 
     <span class="navbar-brand">Task Manager</span> 

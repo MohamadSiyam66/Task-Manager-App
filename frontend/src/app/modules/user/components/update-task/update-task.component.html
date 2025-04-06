@@ -1,33 +1,36 @@
 <div class="container">
-
     <mat-card>
+        <!-- Task Title -->
         <mat-card-header>
             <mat-card-title class="card-title">Update Task</mat-card-title>
         </mat-card-header>
 
         <mat-card-content>
+            <!-- Update Form -->
             <form [formGroup]="updateTaskForm" (ngSubmit)="onUpdate()">
+                <!-- Update Form Title-->
                 <mat-form-field appearance="fill" class="form-field">
                     <mat-label>Title</mat-label>
                     <input matInput type="text" placeholder="Title" formControlName="title" required />
                     <mat-error *ngIf="updateTaskForm.get('title')?.hasError('required')">Task name is required.</mat-error>
                 </mat-form-field>
-
+                <!-- Update Form Description-->
                 <mat-form-field appearance="fill" class="form-field">
                     <mat-label>Description</mat-label>
                     <textarea matInput placeholder="Description" formControlName="description" ></textarea>
                     <mat-error *ngIf="updateTaskForm.get('description')?.hasError('required')">Description is required.</mat-error>
                 </mat-form-field>
-
+                <!-- Update Form Status-->
                 <mat-form-field appearance="fill" class="form-field">
                     <mat-label>Status</mat-label>
                     <mat-select formControlName="status" required>
-                        <mat-option value="TO_DO">To Do</mat-option>
-                        <mat-option value="IN_PROGRESS">In Progress</mat-option>
+                        <mat-option value="TO DO">To Do</mat-option>
+                        <mat-option value="IN PROGRESS">In Progress</mat-option>
                         <mat-option value="DONE">Done</mat-option>
                     </mat-select>
                     <mat-error *ngIf="updateTaskForm.get('status')?.hasError('required')">Status is required.</mat-error>
                 </mat-form-field>
+                <!-- Update Form Submit btn -->
                 <button mat-raised-button color="primary" type="submit">Update Task</button>
             </form>
         </mat-card-content>
