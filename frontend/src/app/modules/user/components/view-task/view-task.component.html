@@ -1,0 +1,16 @@
+<!-- Tasks -->
+<div class="task-list" *ngIf="taskData"> 
+    <mat-divider></mat-divider>
+    <mat-card class="task-card">
+        <div class="task-details">  
+            <h2 class="task-name">{{ taskData.title }}</h2>  
+            <h3 class="task-description">{{ taskData.id }}</h3> 
+            <h3 class="task-description">{{ taskData.description }}</h3> 
+            <h3 class="task-description">{{ taskData.status }}</h3>
+            <h3 class="task-description">{{ taskData.createdAt }}</h3>
+            <h3 class="task-description">{{ taskData.userName }}</h3>
+        </div>  
+        <mat-divider></mat-divider>   
+        
+    </mat-card>  
+</div>  
