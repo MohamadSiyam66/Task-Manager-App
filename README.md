@@ -1,39 +1,51 @@
-# Task-Manager-App
-Full Stack Coding Assignment
-## Setup Instructions
+# Task Manager App
+   Full-Stack Application (Angular + Spring Boot + MySQL)
 
-### Prerequisites
-- VSCode, Intellij idea
-- java version "21.0.1" 2023-10-17 LTS
-- Angular CLI v15+
-- MySQL Server 8.0+
-- MySQL Workbench (optional)
+   A task management system with JWT authentication, Docker support, and CRUD operations.
 
-## Installation
-1. Clone the repository:
-   git clone https://github.com/MohamadSiyam66/Task-Manager-App.git
-2. cd Task-Manager-App
+## 🛠️ Technologies Used
+- Frontend: Angular 15, Angular Material
+- Backend: Spring Boot 3 (Java 21), JWT Authentication
+- Database: MySQL 8.0
+- DevOps: Docker, Docker Compose
 
-## Credentials ( JWT is implemented)
-   JWT Token is Auto Genarated By The Application
-   
-## Backend Setup
-1. cd backend
-2. open application.properties
-   add your username and password
-3. connect with MySQL Database
-4. update maven dependencies
-5. Run BackendApplication
+⚙️ Prerequisites
+- Tool	Version	Installation Guide
+- Java	21.0.1+	Oracle JDK
+- Angular CLI	15.x	npm install -g @angular/cli@15
+- MySQL	8.0+	MySQL Downloads
+- Docker (Optional)	Latest	Docker Desktop
 
-## Frontend Setup
-1. Install dependencies: npm install
-2. Start the development server: ng serve
-3. Register User By Providing Email and Password
-4. Login Using Email and Password
+## 🚀 Installation
+1. Clone the Repository
+- git clone https://github.com/MohamadSiyam66/Task-Manager-App.git  
+- cd Task-Manager-App  
 
-## Databse Setup
-1. Find the provided task-manager-db.sql file inside Backend Folder
-2. Execute task-manager-db.sql (It will create the database and the tables)
+2. Backend Setup
+- cd backend  
+- Configure application.properties: 
+- Build and run: mvn spring-boot:run  
+- API will start at: http://localhost:8080
+
+3. Frontend Setup
+- cd frontend  
+- npm install  
+- ng serve  
+- Access UI at: http://localhost:4200
+
+4. Database Setup
+- Execute backend/task-manager-db.sql in MySQL Workbench or via CLI: mysql -u root -p < task-manager-db.sql  
+
+## 🐳 Docker Deployment (Optional)
+- docker-compose up -d  
+- Frontend: http://localhost:4200
+- Backend: http://localhost:8080
+
+## 🔐 Authentication (JWT)
+- Auto-generated JWT secret
+
+## 📜 License
+MIT © Mohamad Siyam
 
 ## Screanshots
 1.Login Page
@@ -57,10 +69,5 @@ Full Stack Coding Assignment
 
 7. View Task Details
 ![image](https://github.com/user-attachments/assets/4f55d8e4-7bf0-44ff-a595-9febb33e3b11)
-
-8.
-
-
-
 
 
