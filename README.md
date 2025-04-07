@@ -37,7 +37,7 @@
 - Execute backend/task-manager-db.sql in MySQL Workbench or via CLI: mysql -u root -p < task-manager-db.sql  
 
 ## 🐳 Docker Deployment 
-- docker-compose up -d  
+- docker-compose up 
 - Frontend: http://localhost:4200
 - Backend: http://localhost:8080
 
