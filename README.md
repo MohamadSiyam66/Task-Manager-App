@@ -10,11 +10,11 @@
 - DevOps: Docker, Docker Compose
 
 ⚙️ Prerequisites
-- Tool	Version	Installation Guide
-- Java	21.0.1+	Oracle JDK
-- Angular CLI	15.x	npm install -g @angular/cli@15
-- MySQL	8.0+	MySQL Downloads
-- Docker (Optional)	Latest	Docker Desktop
+- Tool	            	Installation Guide
+- Java 21.0.1+	         [Oracle JDK](https://www.oracle.com/java/technologies/downloads/)
+- Angular CLI 15.x	   npm install -g @angular/cli@15
+- MySQL 8.0+	         [MySQL Downloads](https://dev.mysql.com/downloads/)
+- Docker Latest	      [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ## 🚀 Installation
 1. Clone the Repository
@@ -36,7 +36,7 @@
 4. Database Setup
 - Execute backend/task-manager-db.sql in MySQL Workbench or via CLI: mysql -u root -p < task-manager-db.sql  
 
-## 🐳 Docker Deployment (Optional)
+## 🐳 Docker Deployment 
 - docker-compose up -d  
 - Frontend: http://localhost:4200
 - Backend: http://localhost:8080
@@ -44,8 +44,8 @@
 ## 🔐 Authentication (JWT)
 - Auto-generated JWT secret
 
-## 📜 License
-MIT © Mohamad Siyam
+## 🚨 Troubleshooting
+- Docker Build Error:	Run docker-compose build --no-cache
 
 ## Screanshots
 1.Login Page
