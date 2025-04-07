@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -37,7 +38,7 @@ public class AuthController {
         if(authService.hasUserWithUsername(userRegisterReq.getUsername())) {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Username already exists");
         }
-        UserDto createdUserDto =authService.registerUser(userRegisterReq);
+        UserDto createdUserDto = authService.registerUser(userRegisterReq);
         if(createdUserDto == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not created");
         }
@@ -45,29 +46,37 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody AuthRequest authRequest){
-        try{
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        }catch (BadCredentialsException e){
-            throw new BadCredentialsException("Invalid username or password");
-        }
-        final UserDetails userDetails = userService.userDetailService()
-                        .loadUserByUsername(authRequest.getUsername());
-        Optional<User> optionalUser = userRepository.findByUsername(authRequest.getUsername());
-        final String jwtToken = jwtUtil.generateToken(userDetails);
-        AuthResponse authResponse = new AuthResponse();
+    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
+            );
 
-        if(optionalUser.isPresent()) {
-            String username = optionalUser.get().getUsername();
-            //String nameBeforeAt = username.split("@")[0];
+            final UserDetails userDetails = userService.userDetailService()
+                    .loadUserByUsername(authRequest.getUsername());
 
+            Optional<User> optionalUser = userRepository.findByUsername(authRequest.getUsername());
+
+            if (!optionalUser.isPresent()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body("Invalid username or password");
+            }
+
+            final String jwtToken = jwtUtil.generateToken(userDetails);
+
+            AuthResponse authResponse = new AuthResponse();
             authResponse.setJwt(jwtToken);
             authResponse.setUserId(optionalUser.get().getId());
-            authResponse.setUsername(username);
+            authResponse.setUsername(optionalUser.get().getUsername());
+
+            return ResponseEntity.ok(authResponse);
+
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("Invalid username or password");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred during authentication");
         }
-
-        return authResponse;
     }
-
-
 }

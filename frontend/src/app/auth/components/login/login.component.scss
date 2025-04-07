@@ -66,6 +66,32 @@ opacity: 0;
 &:nth-child(2) { animation-delay: 0.7s; }
 }
 
+.error-container {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    color: #721c24;
+    
+    .error-icon {
+        margin-right: 8px;
+        color: #dc3545;
+    }
+    
+    .error-text {
+        font-size: 14px;
+    }
+}
+
+.error-snackbar {
+    background-color: #dc3545;
+    color: white;
+}
+
 /* Input field styling */
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
 color: rgba(16, 142, 233, 0.2);
@@ -128,10 +154,10 @@ margin: 0 auto;
 
 /* Error Styling */
 .error-message {
-color: $error-color;
-font-size: 0.8rem;
-margin-top: 5px;
-animation: shake 0.3s ease-in-out;
+    background-color: #108ee9;
+    color: $error-color;
+    font-size: 0.8rem;
+    animation: shake 0.3s ease-in-out;
 }
 
 /* Animations */

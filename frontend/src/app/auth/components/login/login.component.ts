@@ -14,40 +14,56 @@ export class LoginComponent {
   loginForm: FormGroup;
   isLoading: boolean = false;
   hidePassword: boolean = true;
+  errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private storageService: StorageService,
     private router: Router
   ) {
-      this.loginForm = this.fb.group({
-        username: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
-      });
-    }
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
-    onSubmit(): void {
-      console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value).subscribe(res => {
-        console.log(res);
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      return;
+    }
+  
+    this.isLoading = true;
+    this.errorMessage = null;
+  
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
         if (res.userId != null) {  
           const user = {  
             id: res.userId,  
-            role: res.userRole  
+            username: res.username,
+            email: this.loginForm.value.username,
           }; 
           StorageService.saveUser(user);  
           StorageService.saveToken(res.jwt);  
-          if (StorageService.isUserLoggedIn()) {  
-            this.router.navigateByUrl('/user/dashboard');  
-          } else {  
-            this.snackBar.open("Login successful", "Close", { duration: 5000 });  
-          }  
-        } else {  
-          this.snackBar.open("Invalid credentials", "Close", { duration: 5000, panelClass: "error-snackbar" });  
-        }}); 
-          
-    }
+          this.router.navigateByUrl('/user/dashboard');  
+          this.snackBar.open("Login successful", "Close", { duration: 5000 });
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.errorMessage = err.message;
+        this.snackBar.open(err.message, "Close", { 
+          duration: 5000, 
+          panelClass: ['error-snackbar'] 
+        });
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
+    }); 
+  }
 
   togglePaswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
