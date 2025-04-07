@@ -10,11 +10,11 @@
 - DevOps: Docker, Docker Compose
 
 ⚙️ Prerequisites
-- Tool	            	Installation Guide
-- Java 21.0.1+	         [Oracle JDK](https://www.oracle.com/java/technologies/downloads/)
-- Angular CLI 15.x	   npm install -g @angular/cli@15
-- MySQL 8.0+	         [MySQL Downloads](https://dev.mysql.com/downloads/)
-- Docker Latest	      [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Tool	            	| Installation Guide
+- Java 21.0.1+	       :  [Oracle JDK](https://www.oracle.com/java/technologies/downloads/)
+- Angular CLI 15.x	 :  npm install -g @angular/cli@15
+- MySQL 8.0+	       : [MySQL Downloads](https://dev.mysql.com/downloads/)
+- Docker Latest	    :  [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ## 🚀 Installation
 1. Clone the Repository
