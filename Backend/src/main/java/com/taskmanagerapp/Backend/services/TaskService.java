@@ -12,7 +12,7 @@ public interface TaskService {
     // Method to get a task by its ID
     Optional<Task> getTaskById(Long id);
 
-    // Method to createTaskeate a new task
+    // Method to create a new task
     Task createTask(Task task);
 
     // Method to update an existing task

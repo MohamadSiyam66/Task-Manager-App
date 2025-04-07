@@ -47,6 +47,7 @@ public class Task {
         taskDto.setStatus(status);
         taskDto.setUserName(user.getUsername());
         taskDto.setUserId(user.getId());
+        taskDto.setCreatedAt(createdAt);
         return taskDto;
     }
 
