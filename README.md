@@ -1,5 +1,5 @@
 # Task-Manager-App
-Full Stack Coding Assignment from Treinetic
+Full Stack Coding Assignment
 ## Setup Instructions
 
 ### Prerequisites
@@ -9,7 +9,7 @@ Full Stack Coding Assignment from Treinetic
 - MySQL Server 8.0+
 - MySQL Workbench (optional)
 
-# Installation
+## Installation
 1. Clone the repository:
    git clone https://github.com/MohamadSiyam66/Task-Manager-App.git
 2. cd Task-Manager-App
@@ -17,7 +17,7 @@ Full Stack Coding Assignment from Treinetic
 ## Credentials ( JWT is implemented)
    JWT Token is Auto Genarated By The Application
    
-### Backend Setup
+## Backend Setup
 1. cd backend
 2. open application.properties
    add your username and password
