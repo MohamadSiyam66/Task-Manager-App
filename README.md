@@ -13,6 +13,9 @@ Full Stack Coding Assignment from Treinetic
 1. Clone the repository:
    git clone https://github.com/MohamadSiyam66/Task-Manager-App.git
 2. cd Task-Manager-App
+
+## Credentials ( JWT is implemented)
+   JWT Token is Auto Genarated By The Application
    
 ### Backend Setup
 1. cd backend
