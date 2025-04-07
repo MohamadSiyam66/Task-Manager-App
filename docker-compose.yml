@@ -1,0 +1,47 @@
+
+services:
+  mysql:
+    image: mysql:8.0.36
+    container_name: task-manager-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: task_manager_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    build: ./
+    container_name: task-manager-backend
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/task_manager_db?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+      JWT_SECRET: XGyx1yvY9lzxdnGqxz0ice1lanZLba+EoMDOcvPUnHA=
+      JWT_EXPIRATION: 86400000 # 24 hours in milliseconds
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  frontend:
+    build: ./
+    container_name: task-manager-frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
