@@ -1,10 +1,62 @@
-.task-list{
-    padding: 20px;
+.task-view-container {
+max-width: 800px;
+margin:auto;
+animation: fadeIn 0.5s ease-out;
+height: auto;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+.task-header {
+    background-color: #108ee9;
+    padding: 1.5rem;
+    
+    .header-icon {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    }
 }
 
-.task-details{
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(81, 203, 255, 0.926);
+.task-content {
+    padding: 1rem;
+
+    .detail-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+
+    .detail-icon {
+        margin-right: 1rem;
+        color: #108ee9;
+    }
+
+    .detail-text {
+        flex: 1;
+
+        .detail-label {
+        margin: 0;
+        font-weight: 500;
+        color: #108ee9;
+        font-size: 0.9rem;
+        }
+
+        .detail-value {
+        margin: 0.25rem 0 0 0;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.87);
+        }
+    }
+    }
+}
+
+.action-button {
+    margin-left: 0.5rem;
+    mat-icon {
+    margin-right: 0.25rem;
+    }
+}
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
 }

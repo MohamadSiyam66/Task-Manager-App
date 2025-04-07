@@ -1,16 +1,87 @@
-<!-- Tasks -->
-<div class="task-list" *ngIf="taskData"> 
+<mat-card class="task-view-container" *ngIf="taskData">
+<mat-card-header class="task-header">
+    <mat-card-title>
+    <mat-icon class="header-icon">task_alt</mat-icon>
+    Task Details
+    </mat-card-title>
+    <mat-card-subtitle>Complete information about the task</mat-card-subtitle>
+</mat-card-header>
+
+<mat-divider></mat-divider>
+
+<mat-card-content class="task-content">
+    <!-- Title Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">title</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Title</h3>
+        <p class="detail-value">{{ taskData.title }}</p>
+    </div>
+    </div>
     <mat-divider></mat-divider>
-    <mat-card class="task-card">
-        <div class="task-details">  
-            <h2 class="task-name">{{ taskData.title }}</h2>  
-            <h3 class="task-description">{{ taskData.id }}</h3> 
-            <h3 class="task-description">{{ taskData.description }}</h3> 
-            <h3 class="task-description">{{ taskData.status }}</h3>
-            <h3 class="task-description">{{ taskData.createdAt }}</h3>
-            <h3 class="task-description">{{ taskData.userName }}</h3>
-        </div>  
-        <mat-divider></mat-divider>   
-        
-    </mat-card>  
-</div>  
+
+    <!-- Task ID Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">fingerprint</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Task ID</h3>
+        <p class="detail-value">{{ taskData.id }}</p>
+    </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- Description Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">description</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Description</h3>
+        <p class="detail-value">{{ taskData.description || 'No description provided' }}</p>
+    </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- Status Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">flag</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Status</h3>
+        <p class="detail-value">
+        <mat-chip selected>
+            {{ taskData.status }}
+        </mat-chip>
+        </p>
+    </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- Created Date Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">event</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Created At</h3>
+        <p class="detail-value">{{ taskData.createdAt | date:'medium' }}</p>
+    </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- Assigned User Row -->
+    <div class="detail-row">
+    <mat-icon class="detail-icon">person</mat-icon>
+    <div class="detail-text">
+        <h3 class="detail-label">Assigned To</h3>
+        <p class="detail-value">{{ taskData.userName }}</p>
+    </div>
+    </div>
+</mat-card-content>
+
+<mat-card-actions>
+    <button mat-raised-button color="primary" class="action-button" 
+            [routerLink]="'/user/task/' + taskData.id + '/edit'">
+    <mat-icon>edit</mat-icon> EDIT
+    </button>
+    <button mat-raised-button color="warn" class="action-button" 
+            (click)="deleteTask(taskData.id)">
+    <mat-icon>delete</mat-icon> DELETE
+    </button>
+</mat-card-actions>
+</mat-card>
