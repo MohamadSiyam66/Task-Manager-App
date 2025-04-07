@@ -32,12 +32,12 @@ Full Stack Coding Assignment
 4. Login Using Email and Password
 
 ## Databse Setup
-1. find the provided task-manager-db.sql file
-2. execute task-manager-db.sql (It will create the database and the tables)
+1. Find the provided task-manager-db.sql file inside Backend Folder
+2. Execute task-manager-db.sql (It will create the database and the tables)
 
 ## Screanshots
 1.Login Page
-![image](https://github.com/user-attachments/assets/02f80425-b460-492e-b91d-aded6f1fae0d)
+   ![image](https://github.com/user-attachments/assets/02f80425-b460-492e-b91d-aded6f1fae0d)
 
 2. Register Page
 ![image](https://github.com/user-attachments/assets/15a4f648-4c51-4eac-9ded-b2d778e17dfe)
