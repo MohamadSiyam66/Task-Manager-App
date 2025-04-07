@@ -28,6 +28,10 @@ Full Stack Coding Assignment from Treinetic
 3. Register User By Providing Email and Password
 4. Login Using Email and Password
 
+## Databse Setup
+1. find the provided task-manager-db.sql file
+2. execute task-manager-db.sql (It will create the database and the tables)
+
 ## Screanshots
 1.Login Page
 ![image](https://github.com/user-attachments/assets/02f80425-b460-492e-b91d-aded6f1fae0d)
