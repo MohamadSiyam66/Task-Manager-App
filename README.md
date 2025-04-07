@@ -12,7 +12,7 @@ Full Stack Coding Assignment from Treinetic
 # Installation
 1. Clone the repository:
    git clone https://github.com/MohamadSiyam66/Task-Manager-App.git
-   cd Task-Manager-App -> cd frontend
+2. cd Task-Manager-App
    
 ### Backend Setup
 1. cd backend
@@ -25,7 +25,8 @@ Full Stack Coding Assignment from Treinetic
 ## Frontend Setup
 1. Install dependencies: npm install
 2. Start the development server: ng serve
-
+3. Register User By Providing Email and Password
+4. Login Using Email and Password
 
 ## Screanshots
 1.Login Page
