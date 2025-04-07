@@ -35,7 +35,7 @@ Full Stack Coding Assignment from Treinetic
 ![image](https://github.com/user-attachments/assets/15a4f648-4c51-4eac-9ded-b2d778e17dfe)
 
 3. User Dashboard
-![image](https://github.com/user-attachments/assets/ea2e9a08-19f3-4202-a213-ff8264b0da4d)
+![image](https://github.com/user-attachments/assets/1645ae09-8cff-4466-b07f-5a82340fb52f)
 
 4. New Task
 ![image](https://github.com/user-attachments/assets/bdb4dcc3-4e2f-4f34-a5c6-8de43f379081)
@@ -44,7 +44,13 @@ Full Stack Coding Assignment from Treinetic
 ![image](https://github.com/user-attachments/assets/bf2b3c59-c90b-452f-a37a-56fed30b206a)
 
 6. Filter
-![image](https://github.com/user-attachments/assets/74f47d85-b628-4dff-9e29-b9e1fca086f6)
+![image](https://github.com/user-attachments/assets/b8f24991-fac0-4765-a211-a5a94e117a25)
+
+
+7. View Task Details
+![image](https://github.com/user-attachments/assets/4f55d8e4-7bf0-44ff-a595-9febb33e3b11)
+
+8.
 
 
 
