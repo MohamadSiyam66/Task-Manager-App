@@ -46,6 +46,9 @@
 
 ## 🚨 Troubleshooting
 - Docker Build Error:	Run docker-compose build --no-cache
+- If docker-compose Doesn't work properly
+  1. Change the **mysql:3306** to **localhost:3306** in the application.properies
+  2. Then run the backend locally.
 
 ## Screanshots
 1.Login Page
