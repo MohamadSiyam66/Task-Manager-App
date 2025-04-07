@@ -38,6 +38,9 @@
 
 ## 🐳 Docker Deployment 
 - docker-compose up --build
+- **Register using email and password**
+- **Login using email and password**
+- **Create Tasks, View, Update, delete**
 - Frontend: http://localhost:4200
 - Backend: http://localhost:8080
 
