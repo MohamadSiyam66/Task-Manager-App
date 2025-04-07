@@ -37,7 +37,7 @@
 - Execute backend/task-manager-db.sql in MySQL Workbench or via CLI: mysql -u root -p < task-manager-db.sql  
 
 ## 🐳 Docker Deployment 
-- docker-compose up 
+- docker-compose up --build
 - Frontend: http://localhost:4200
 - Backend: http://localhost:8080
 
@@ -46,11 +46,15 @@
 
 ## 🚨 Troubleshooting
 - Docker Build Error:	Run docker-compose build --no-cache
-- If docker-compose Doesn't work properly
+- If you want to run locally 
   1. Change the **mysql:3306** to **localhost:3306** in the application.properties
-  2. Then run the backend locally.
+  2. Then run the backend.
 
 ## Screanshots
+
+- Docker
+  ![image](https://github.com/user-attachments/assets/920b836d-8272-4230-b47e-c1af437081ef)
+
 1.Login Page
    ![image](https://github.com/user-attachments/assets/02f80425-b460-492e-b91d-aded6f1fae0d)
 
